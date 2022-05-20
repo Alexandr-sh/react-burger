@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ModalOverlay.module.css';
+import PropTypes from 'prop-types';
 
 class ModalOverlay extends React.Component {
     handleClick = () => {
@@ -12,3 +13,7 @@ class ModalOverlay extends React.Component {
 }
 
 export default ModalOverlay;
+
+ModalOverlay.propTypes = {
+    closeModal: PropTypes.func
+}; 

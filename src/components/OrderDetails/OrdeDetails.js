@@ -3,10 +3,10 @@ import styles from './OrderDetails.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
+import PropTypes from 'prop-types';
 
 class OrderDetails extends React.Component {
     render() {
-        console.log(this.props.isOpened)
         return (<>
             {this.props.isOpened && (
                 <div className={styles.container}>
@@ -24,5 +24,10 @@ class OrderDetails extends React.Component {
         </>)
     }
 }
+
+OrderDetails.propTypes = {
+    closeModal: PropTypes.func,
+    isOpened: PropTypes.bool
+}; 
 
 export default OrderDetails;

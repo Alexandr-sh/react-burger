@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './IngredientDetails.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types';
 
 class IngredientDetails extends React.Component {
     render() {
@@ -39,5 +40,11 @@ class IngredientDetails extends React.Component {
         </>)
     }
 }
+
+IngredientDetails.propTypes = {
+    isOpened: PropTypes.bool,
+    closeModal: PropTypes.func,
+    data: PropTypes.object
+  }; 
 
 export default IngredientDetails;

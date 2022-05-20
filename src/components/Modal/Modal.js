@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = WrappedComponent => {
     return class extends React.Component {
@@ -39,5 +40,10 @@ const Modal = WrappedComponent => {
         }
     }
 };
+
+Modal.propTypes = {
+    isOpened: PropTypes.bool,
+    data: PropTypes.object
+  }; 
 
 export default Modal;

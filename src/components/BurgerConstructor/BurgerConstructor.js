@@ -4,6 +4,7 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import OrderDetails from '../OrderDetails/OrdeDetails';
 import Modal from '../Modal/Modal';
+import PropTypes from 'prop-types';
 
 const OrderDetailsModal = Modal(OrderDetails);
 
@@ -71,5 +72,10 @@ class BurgerConstructor extends React.Component {
         </div>;
     }
 }
+
+BurgerConstructor.propTypes = {
+    data: PropTypes.array,
+    bun: PropTypes.object
+  }; 
 
 export default BurgerConstructor;

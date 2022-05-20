@@ -5,6 +5,7 @@ import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import ListItem from './ListItem.js';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import Modal from '../Modal/Modal';
+import PropTypes from 'prop-types';
 
 const IngridientsDetailsModal = Modal(IngredientDetails);
 
@@ -74,5 +75,9 @@ class BurgerIngredients extends React.Component {
         </div>;
     }
 }
+
+BurgerIngredients.propTypes = {
+    data: PropTypes.array
+  }; 
 
 export default BurgerIngredients;
