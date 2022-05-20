@@ -1,0 +1,57 @@
+.orderDetails{
+    position: absolute;
+    padding: 120px 40px 60px 120px;
+    width: 720px;
+    background: #1C1C21;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    margin: 0;
+    
+}
+
+.button {
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    position: absolute;
+    top: 60px;
+    right: 40px;
+}
+
+.subHeading{
+    margin: 0;
+    margin-top: 32px;
+
+}
+
+.doneImg{
+    margin: 0;
+    margin-top: 60px;
+    height: 120px;
+}
+
+.status{
+    margin: 0;
+    margin-top: 60px;
+}
+
+.statusDescr{
+    margin: 0;
+    margin-top: 8px;
+}
