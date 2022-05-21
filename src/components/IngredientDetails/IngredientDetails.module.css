@@ -1,5 +1,6 @@
 .ingredientDetails{
     position: absolute;
+    box-sizing: border-box;
     padding: 40px 40px 60px 40px;
     width: 720px;
     background: #1C1C21;

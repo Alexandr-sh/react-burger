@@ -1,6 +1,7 @@
 .orderDetails{
+    box-sizing: border-box;
     position: absolute;
-    padding: 120px 40px 60px 120px;
+    padding: 120px 0;
     width: 720px;
     background: #1C1C21;
     border-radius: 40px;
