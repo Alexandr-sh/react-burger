@@ -3,7 +3,6 @@
     max-height: calc(100vh - 128px);
     display: flex;
     flex-direction: column;
-    gap: 16px;
     overflow: auto;
 }
 
