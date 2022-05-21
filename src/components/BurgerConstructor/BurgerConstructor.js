@@ -32,6 +32,10 @@ class BurgerConstructor extends React.Component {
         this.setState(prevState => ({...prevState, orderFormIsOpened: true}))
     }
 
+    closeOrderInfo = () => {
+        this.setState(prevState => ({...prevState, orderFormIsOpened: false}))
+    }
+
 
     render() {
         this.updateData();
@@ -68,7 +72,7 @@ class BurgerConstructor extends React.Component {
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={this.getOrderInfo}>Оформить заказ</button>
             </div>
-            <OrderDetailsModal isOpened={this.state.orderFormIsOpened}/>
+            <OrderDetailsModal isOpened={this.state.orderFormIsOpened} close={this.closeOrderInfo}/>
         </div>;
     }
 }
