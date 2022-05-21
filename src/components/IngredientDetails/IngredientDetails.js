@@ -3,10 +3,11 @@ import styles from './IngredientDetails.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
+import Spec from './Spec';
+
 
 class IngredientDetails extends React.Component {
     render() {
-        /*console.log(this.props.isOpened)*/
         return (<>
             {this.props.isOpened && (
                 <div className={styles.container}>
@@ -16,24 +17,12 @@ class IngredientDetails extends React.Component {
                         <h2 className={`${styles.header} text text_type_main-large`}>Детали ингридиента</h2>
                         <img src={this.props.data.image} className={styles.img} />
                         <h3 className={`${styles.name} text text_type_main-medium`}>{this.props.data.name}</h3>
-                        <div className={styles.specs}>
-                            <div className={styles.spec}>
-                                <div className={`${styles.specName} text text_type_main-default text_color_inactive`}>Калории,ккал</div>
-                                <div className={`${styles.specCount} text text_type_digits-default text_color_inactive`}>{this.props.data.calories}</div>
-                            </div>
-                            <div className={styles.spec}>
-                                <div className={`${styles.specName} text text_type_main-default text_color_inactive`}>Белки, г</div>
-                                <div className={`${styles.specCount} text text_type_digits-default text_color_inactive`}>{this.props.data.proteins}</div>
-                            </div>
-                            <div className={styles.spec}>
-                                <div className={`${styles.specName} text text_type_main-default text_color_inactive`}>Жиры, г</div>
-                                <div className={`${styles.specCount} text text_type_digits-default text_color_inactive`}>{this.props.data.fat}</div>
-                            </div>
-                            <div className={styles.spec}>
-                                <div className={`${styles.specName} text text_type_main-default text_color_inactive`}>Углеводы, г</div>
-                                <div className={`${styles.specCount} text text_type_digits-default text_color_inactive`}>{this.props.data.carbohydrates}</div>
-                            </div>
-                        </div>
+                        <ul className={styles.specs}>
+                            <Spec name="Калории,ккал" count={this.props.data.calories}></Spec>
+                            <Spec name="Белки, г" count={this.props.data.proteins}></Spec>
+                            <Spec name="Жиры, г" count={this.props.data.fat}></Spec>
+                            <Spec name="Углеводы, г" count={this.props.data.carbohydrates}></Spec>
+                        </ul>
                     </div>
                 </div>
             )}

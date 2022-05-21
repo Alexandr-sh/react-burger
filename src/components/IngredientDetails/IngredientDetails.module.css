@@ -49,21 +49,3 @@
     justify-content: space-between;
     margin-top: 32px;
 }
-
-.spec {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    align-items: center;
-}
-
-.spec:first-child {
-    margin-left: 0;
-}
-
-.specName {
-
-}
-
-.specCount {
-}

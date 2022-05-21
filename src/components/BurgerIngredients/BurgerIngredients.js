@@ -44,30 +44,24 @@ class BurgerIngredients extends React.Component {
             <h3 className={`${styles.title} text text_type_main-medium`}>Булки</h3>
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
-                    ingridient.type === "bun" ? (
+                    ingridient.type === "bun" && (
                         <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
-                    ) : (
-                        null
                     )
                 ))}
             </div>
             <h3 className={`${styles.title} text text_type_main-medium`}>Соусы</h3>
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
-                    ingridient.type === "sauce" ? (
+                    ingridient.type === "sauce" && (
                         <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
-                    ) : (
-                        null
                     )
                 ))}
             </div>
             <h3 className={`${styles.title} text text_type_main-medium`}>Начинки</h3>
             <div className={styles.ingridientsList} >
                 {this.props.data.map((ingridient, index) => (
-                    ingridient.type === "main" ? (
+                    ingridient.type === "main" && (
                         <ListItem data={ingridient} key={ingridient._id} selectIngridient={this.selectIngridient}/>
-                    ) : (
-                        null
                     )
                 ))}
             </div>
