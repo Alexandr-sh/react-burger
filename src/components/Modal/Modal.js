@@ -17,7 +17,7 @@ const Modal = WrappedComponent => {
             })
         };
 
-        
+
         close = () => {
             this.setState({
                 isOpened: false
@@ -25,8 +25,8 @@ const Modal = WrappedComponent => {
         };
 
         componentDidUpdate(prevProps, prevState) {
-            if (this.props.isOpened != prevState.isOpened) this.setState({isOpened:this.props.isOpened})
-          }
+            if (this.props.isOpened != prevState.isOpened) this.setState({ isOpened: this.props.isOpened })
+        }
 
         render() {
             return (
@@ -34,8 +34,8 @@ const Modal = WrappedComponent => {
                     data={this.props.data}
                     closeModal={this.close}
                     openModal={this.open}
-                    isOpened = {this.state.isOpened}
-                    close = {this.props.close}
+                    isOpened={this.state.isOpened}
+                    close={this.props.close}
                 />
             )
         }
@@ -45,6 +45,6 @@ const Modal = WrappedComponent => {
 Modal.propTypes = {
     isOpened: PropTypes.bool,
     data: PropTypes.object
-  }; 
+};
 
 export default Modal;

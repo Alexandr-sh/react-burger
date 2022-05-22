@@ -2,10 +2,14 @@
     padding: 100px 16px 92px 16px;
     width: 615px;
     max-height: calc(100vh - 128px);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
+    grid-auto-flow: row;
     overflow: auto;
     row-gap: 16px;
+    align-items: center;
 }
 
 .burgerConstructor::-webkit-scrollbar {

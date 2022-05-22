@@ -10,6 +10,7 @@ class OrderDetails extends React.Component {
         this.props.close();
         this.props.closeModal();
     }
+
     render() {
         return (<>
             {this.props.isOpened && (
