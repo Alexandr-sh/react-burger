@@ -1,0 +1,48 @@
+.burgerConstructor {
+    padding: 100px 16px 92px 16px;
+    width: 615px;
+    max-height: calc(100vh - 128px);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
+    grid-auto-flow: row;
+    overflow: auto;
+    row-gap: 16px;
+    align-items: center;
+}
+
+.burgerConstructor::-webkit-scrollbar {
+    width: 10px;
+    background-color: #2F2F37;
+}
+
+.burgerConstructor::-webkit-scrollbar-button {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.burgerConstructor::-webkit-scrollbar-thumb {
+    background-color: #8585AD
+}
+
+.footer {
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.totalPrice {
+    margin-right: 9.5px;
+}
+
+.button {
+    width: 215px;
+    height: 64px;
+    margin-left: 40px;
+    background: linear-gradient(63.18deg, #801AB3 0%, #4C4CFF 100%);
+    border-radius: 64px;
+    color: #F2F2F3;
+    border: 0;
+}

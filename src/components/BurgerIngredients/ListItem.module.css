@@ -1,0 +1,25 @@
+.listItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 240px;
+    margin-bottom: 4px;
+}
+
+.price {
+    display: flex;
+    margin-top: 4px;
+}
+
+.value {
+    margin-right: 9px;
+}
+
+.name {
+    margin-top: 8px;
+}
