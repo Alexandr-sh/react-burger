@@ -12,6 +12,8 @@ import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import { MainContext } from '../../utils/mainContext.js';
+
 const url = 'https://norma.nomoreparties.space/api/ingredients';
 
 const IngredientModal = Modal(IngredientDetails);
@@ -20,10 +22,12 @@ const IngredientModal = Modal(IngredientDetails);
 
 
 const App = () => {
+
   const [state, setState] = React.useState({
     ingridients: null,
     loading: true,
-    bun: "60666c42cc7b410027a1a9b5"
+    bun: "60666c42cc7b410027a1a9b5",
+    topping: null
   })
 
   useEffect(() => {
@@ -32,14 +36,14 @@ const App = () => {
       const res = await getIngridients(url);
       const serverData = await res.json();
       let initialBun = {};
-      for (let i=0; i<serverData.data.length; ++i){
-        if (serverData.data[i].type === "bun"){
-          serverData.data[i].__v=2;
+      for (let i = 0; i < serverData.data.length; ++i) {
+        if (serverData.data[i].type === "bun") {
+          serverData.data[i].__v = 2;
           initialBun = serverData.data[i];
           break;
         }
       }
-      setState({ ingridients: serverData.data, loading: false, bun: initialBun });
+      setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: []});
     }
     getProductData();
   }, [])
@@ -51,7 +55,7 @@ const App = () => {
         if (item._id === bun._id) item.__v = 2;
         if (item._id === state.bun._id) item.__v = 0;
       })
-      setState(prevState => ({...prevState, bun:bun, ingridients: newData}));
+      setState(prevState => ({ ...prevState, bun: bun, ingridients: newData }));
     }
   }
 
@@ -60,22 +64,28 @@ const App = () => {
       selectBun(ingr);
     }
     else {
-      const newData = [...state.ingridients];
-      newData.forEach((item) => {
-        if (item._id === ingr._id) item.__v += 1;
+      const newIngridients = [...state.ingridients];
+      const newTopping = [...state.topping];
+      newIngridients.forEach((item) => {
+        if (item._id === ingr._id) {
+          item.__v += 1;
+          newTopping.push(item);
+        }
       })
-      setState(prevState => ({...prevState, ingridients: newData}));
+      setState(prevState => ({ ...prevState, ingridients: newIngridients, topping: newTopping }));
     }
   }
 
   return (
-    <div className={`${styles.App} text text_type_main-default`}>
-      <AppHeader />
-      <div className={styles.content}>
-        {!state.loading && <BurgerIngredients data={state.ingridients} addIngridient={addIngridient} />}
-        {!state.loading && <BurgerConstructor data={state.ingridients} bun={state.bun}/>}
+    <MainContext.Provider value={state}>
+      <div className={`${styles.App} text text_type_main-default`}>
+        <AppHeader />
+        <div className={styles.content}>
+          {!state.loading && <BurgerIngredients data={state.ingridients} addIngridient={addIngridient} />}
+          {!state.loading && <BurgerConstructor data={state.ingridients} bun={state.bun} />}
+        </div>
       </div>
-    </div>
+    </MainContext.Provider>
   )
 }
 
