@@ -27,7 +27,8 @@ const App = () => {
     ingridients: null,
     loading: true,
     bun: "60666c42cc7b410027a1a9b5",
-    topping: null
+    topping: null,
+    orderDetails: null
   })
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const App = () => {
           break;
         }
       }
-      setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: []});
+      setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: [], orderDetails: null});
     }
     getProductData();
   }, [])

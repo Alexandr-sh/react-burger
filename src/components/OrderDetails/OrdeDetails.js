@@ -4,31 +4,37 @@ import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
 import PropTypes from 'prop-types';
+import { OrderFormContext } from '../../utils/orderFormContext.js';
+import { useContext } from 'react';
 
-class OrderDetails extends React.Component {
-    close = () => {
-        this.props.close();
-        this.props.closeModal();
+function OrderDetails(props){
+
+    const state = useContext(OrderFormContext);
+
+    const close = () => {
+        props.close();
+        props.closeModal();
     }
 
-    render() {
-        return (<>
-            {this.props.isOpened && (
+    return (
+        <>
+            {props.isOpened && (
                 <div className={styles.container}>
-                    <ModalOverlay closeModal={this.close}/>
+                    <ModalOverlay closeModal={close}/>
                     <div className={styles.orderDetails}>
-                        <button className={styles.button} onClick={this.close}><CloseIcon type="primary" /></button>
+                        <button className={styles.button} onClick={close}><CloseIcon type="primary" /></button>
                         <h2 className={`${styles.header} text text_type_digits-large`}>034536</h2>
-                        <h3 className={`${styles.subHeading} text text_type_main-medium`}>идентификатор заказа</h3>
+                        <h3 className={`${styles.subHeading} text text_type_main-medium`}>{state.number}</h3>
                         <img src={doneImgPath} className={styles.doneImg}/>
                         <div className={`${styles.status} text text_type_main-medium`}>Ваш заказ начали готовить</div>
                         <div className={`${styles.statusDescr} text text_type_main-medium`}>Дождитесь готовности на орбитальной станции</div>
                     </div>
                 </div>
             )}
-        </>)
-    }
+        </>
+    )
 }
+
 
 OrderDetails.propTypes = {
     closeModal: PropTypes.func,

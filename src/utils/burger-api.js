@@ -16,4 +16,15 @@ export function getIngridients(url) {
     })
 }
 
+export function getOrderData(url,ingridients) {
+    return fetch(url,{
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ingridients)
+      })
+        .then(res => checkApiError(res))
+}
+
 
