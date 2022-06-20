@@ -1,0 +1,18 @@
+.Button {
+    margin: 16px 8px;
+    margin-right: 0;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    color: #F2F2F3;
+}
+
+.Button:first-child {
+    margin-left: 0;
+}
+
+.buttonText {
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+}

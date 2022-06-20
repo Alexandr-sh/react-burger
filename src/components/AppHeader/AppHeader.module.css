@@ -1,0 +1,12 @@
+.AppHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1C1C21;
+}
+
+.buttonContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
