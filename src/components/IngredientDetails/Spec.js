@@ -2,7 +2,16 @@ import React from 'react';
 import styles from './Spec.module.css'
 import PropTypes from 'prop-types';
 
-class Spec extends React.Component {
+function Spec(props) {
+    return (
+        <li className={styles.spec}>
+            <div className={`text text_type_main-default text_color_inactive`}>{props.name}</div>
+            <div className={`text text_type_digits-default text_color_inactive`}>{props.count}</div>
+        </li>
+    )
+}
+
+/*class Spec extends React.Component {
     render() {
         return (
             <li className={styles.spec}>
@@ -11,7 +20,7 @@ class Spec extends React.Component {
             </li>
         )
     }
-}
+}*/
 
 Spec.propTypes = {
     name: PropTypes.string,

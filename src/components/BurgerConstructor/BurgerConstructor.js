@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { MainContext } from '../../utils/mainContext.js';
-import { OrderFormContext } from '../../utils/orderFormContext.js';
+import { MainContext } from '../../services/mainContext.js';
+import { OrderFormContext } from '../../services/orderFormContext.js';
 import { getOrderData } from '../../utils/burger-api';
 
 const url = 'https://norma.nomoreparties.space/api/orders';
@@ -30,18 +30,16 @@ function BurgerConstructor(props) {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const getOrderInfo = () => {
-        const ingrids = []
-        ingrids.push(state.bun._id);
+        const ingridients = []
+        ingridients.push(state.bun._id);
         state.topping.forEach(element => {
-            ingrids.push(element);
+            ingridients.push(element._id);
         });
-        console.log(ingrids);
-        getOrderData(url, { ingredients: ingrids })
+        getOrderData(url, { ingredients: ingridients })
             .then(res => res.json())
             .then(res => {
                 setOrderState({ name: res.name, number: res.order.number });
                 openOrderForm(true);
-                console.log(res)
             })
     }
 

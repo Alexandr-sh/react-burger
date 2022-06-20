@@ -12,7 +12,7 @@ import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
-import { MainContext } from '../../utils/mainContext.js';
+import { MainContext } from '../../services/mainContext.js';
 
 const url = 'https://norma.nomoreparties.space/api/ingredients';
 
@@ -44,7 +44,7 @@ const App = () => {
           break;
         }
       }
-      setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: [], orderDetails: null});
+      setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: [], orderDetails: null });
     }
     getProductData();
   }, [])
@@ -78,15 +78,15 @@ const App = () => {
   }
 
   return (
-    <MainContext.Provider value={state}>
-      <div className={`${styles.App} text text_type_main-default`}>
-        <AppHeader />
-        <div className={styles.content}>
-          {!state.loading && <BurgerIngredients data={state.ingridients} addIngridient={addIngridient} />}
-          {!state.loading && <BurgerConstructor data={state.ingridients} bun={state.bun} />}
-        </div>
+    <div className={`${styles.App} text text_type_main-default`}>
+      <AppHeader />
+      <div className={styles.content}>
+        <MainContext.Provider value={state}>
+          {!state.loading && <BurgerIngredients addIngridient={addIngridient} />}
+          {!state.loading && <BurgerConstructor/>}
+        </MainContext.Provider>
       </div>
-    </MainContext.Provider>
+    </div>
   )
 }
 
