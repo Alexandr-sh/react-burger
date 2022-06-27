@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal';
 
 import { getIngridients } from '../../utils/burger-api';
 
+import { useSelector } from 'react-redux';
 
 import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 
@@ -23,12 +24,15 @@ const IngredientModal = Modal(IngredientDetails);
 
 const App = () => {
 
+  const loading = useSelector((state) => state)
+
   const [state, setState] = React.useState({
     ingridients: null,
     loading: true,
     bun: "60666c42cc7b410027a1a9b5",
     topping: null,
-    orderDetails: null
+    orderDetails: null,
+    currentIngridient: null
   })
 
   useEffect(() => {
@@ -47,6 +51,7 @@ const App = () => {
       setState({ ingridients: serverData.data, loading: false, bun: initialBun, topping: [], orderDetails: null });
     }
     getProductData();
+    console.log(loading);
   }, [])
 
   const selectBun = (bun) => {
