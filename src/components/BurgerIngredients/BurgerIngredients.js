@@ -7,12 +7,12 @@ import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import { MainContext } from '../../services/mainContext.js';
+/*import { MainContext } from '../../services/mainContext.js';*/
 
 const IngridientsDetailsModal = Modal(IngredientDetails);
 
 function BurgerIngredients(props) {
-    const [ingrFormIsOpened, openIngrForm] = React.useState(false);
+    /*const [ingrFormIsOpened, openIngrForm] = React.useState(false);
     const [selectedIngridient, setIngridient] = React.useState(null);
     const [current, setCurrent] = React.useState("Булки");
 
@@ -64,7 +64,7 @@ function BurgerIngredients(props) {
             </div>
             <IngridientsDetailsModal data = {selectedIngridient} isOpened={ingrFormIsOpened}/>
         </div>
-    )
+    )*/
 }
 
 BurgerIngredients.propTypes = {

@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { MainContext } from '../../services/mainContext.js';
-import { OrderFormContext } from '../../services/orderFormContext.js';
+/*import { MainContext } from '../../services/mainContext.js';
+import { OrderFormContext } from '../../services/orderFormContext.js';*/
 import { getOrderData } from '../../utils/burger-api';
 
 const url = 'https://norma.nomoreparties.space/api/orders';
@@ -23,7 +23,7 @@ function BurgerConstructor(props) {
         number: 0
     })
 
-    const state = useContext(MainContext);
+    /*const state = useContext(MainContext);
 
     const [orderFormIsOpened, openOrderForm] = useState(false);
 
@@ -95,7 +95,7 @@ function BurgerConstructor(props) {
                 <OrderDetailsModal isOpened={orderFormIsOpened} close={closeOrderInfo} />
             </OrderFormContext.Provider>
         </div>
-    )
+    )*/
 }
 
 BurgerConstructor.propTypes = {

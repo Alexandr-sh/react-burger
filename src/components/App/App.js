@@ -13,7 +13,7 @@ import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
-import { MainContext } from '../../services/mainContext.js';
+
 
 const url = 'https://norma.nomoreparties.space/api/ingredients';
 
@@ -86,10 +86,10 @@ const App = () => {
     <div className={`${styles.App} text text_type_main-default`}>
       <AppHeader />
       <div className={styles.content}>
-        <MainContext.Provider value={state}>
+        {/*<MainContext.Provider value={state}>
           {!state.loading && <BurgerIngredients addIngridient={addIngridient} />}
           {!state.loading && <BurgerConstructor/>}
-        </MainContext.Provider>
+  </MainContext.Provider>*/}
       </div>
     </div>
   )

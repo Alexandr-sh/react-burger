@@ -4,12 +4,12 @@ import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
 import PropTypes from 'prop-types';
-import { OrderFormContext } from '../../services/orderFormContext.js';
+/*import { OrderFormContext } from '../../services/orderFormContext.js';*/
 import { useContext } from 'react';
 
 function OrderDetails(props){
 
-    const state = useContext(OrderFormContext);
+    /*const state = useContext(OrderFormContext);
 
     const close = () => {
         props.close();
@@ -32,7 +32,7 @@ function OrderDetails(props){
                 </div>
             )}
         </>
-    )
+    )*/
 }
 
 
