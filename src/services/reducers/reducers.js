@@ -3,73 +3,73 @@ import { combineReducers } from 'redux';
 const initialState = {
     loading: true,
     bun: {},
-    ingridients: {},
-    topping: null,
-    orderDetails: null,
+    ingridients: [],
+    topping: {},
+    orderDetails: {},
     ingridientFormIsOpened: false,
     orderFormIsOpened: false
 }
 
 
-const bun = (state = initialState, action) => {
+const bun = (state = initialState.bun, action) => {
     switch (action.type) {
         case "CHANGE_BUN": {
-            return { ...state, bun: action.data }
+            return action.data
         }
         default: return state;
     }
 }
 
 
-const topping = (state = initialState, action) => {
+const topping = (state = initialState.topping, action) => {
     switch (action.type) {
-        case "CHANGE_TOPPING": {
-            return { ...state, topping: action.data }
+        case "ADD_TOPPING": {
+            return [...state, action.data]
         }
         default: return state;
     }
 }
 
-const ingridients = (state = initialState, action) => {
+const ingridients = (state = initialState.ingridients, action) => {
     switch (action.type) {
         case "GET_INGRIDIENTS": {
-            return { ...state, ingridients: action.data }
+            return action.data
         }
         default: return state;
     }
 }
 
-const order = (state = initialState, action) => {
+const order = (state = initialState.orderDetails, action) => {
     switch (action.type) {
         case "GET_ORDER_INFO": {
-            return { ...state, orderDetails: action.data }
+            return action.data
         }
         default: return state;
     }
 }
 
-const loading = (state = initialState, action) => {
+const loading = (state = initialState.loading, action) => {
     switch (action.type) {
         case "LOADING": {
-            return { ...state, loading: action.value }
+            return action.value 
         }
         default: return state;
     }
 }
 
-const openIngridientsForm = (state = initialState, action) => {
+const openIngridientsForm = (state = initialState.ingridientFormIsOpened, action) => {
     switch (action.type) {
         case "OPEN_INGRIDIENT_FORM": {
-            return { ...state, ingridientFormIsOpened: action.value }
+            return action.value
         }
         default: return state;
     }
 }
 
-const openOrderForm = (state = initialState, action) => {
+const openOrderForm = (state = initialState.orderFormIsOpened, action) => {
     switch (action.type) {
         case "OPEN_ORDER_FORM": {
-            return { ...state, orderFormIsOpened: action.value }
+            return action.value
         }
         default: return state;
     }

@@ -1,4 +1,4 @@
 export const changeTopping = (data) => {
-    type: "CHANGE_TOPPING"
+    type: "ADD_TOPPING"
     data: data
 }
