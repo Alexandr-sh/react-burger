@@ -1,4 +1,14 @@
-export const getIngridients = (data)=>{
+export const getIngridients = ()=>{
     type: "GET_INGRIDIENTS"
-    data: data
 }
+
+export const getIngridientsSuccess = (data)=>{
+    type: "GET_INGRIDIENTS_SUCCESS"
+    data:data
+}
+
+export const getIngridientsFailed = ()=>{
+    type: "GET_INGRIDIENTS_FAILED"
+}
+
+
