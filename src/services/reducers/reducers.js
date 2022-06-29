@@ -3,7 +3,11 @@ import { combineReducers } from 'redux';
 const initialState = {
     loading: true,
     bun: {},
-    ingridients: [],
+    ingridients: {
+        request: false,
+        requestFailed: false,
+        ingridientsData: []
+    },
     topping: {},
     orderDetails: {},
     ingridientFormIsOpened: false,
@@ -30,15 +34,6 @@ const topping = (state = initialState.topping, action) => {
     }
 }
 
-const ingridients = (state = initialState.ingridients, action) => {
-    switch (action.type) {
-        case "GET_INGRIDIENTS": {
-            return action.data
-        }
-        default: return state;
-    }
-}
-
 const order = (state = initialState.orderDetails, action) => {
     switch (action.type) {
         case "GET_ORDER_INFO": {
@@ -51,7 +46,7 @@ const order = (state = initialState.orderDetails, action) => {
 const loading = (state = initialState.loading, action) => {
     switch (action.type) {
         case "LOADING": {
-            return action.value 
+            return action.value
         }
         default: return state;
     }
@@ -75,14 +70,44 @@ const openOrderForm = (state = initialState.orderFormIsOpened, action) => {
     }
 }
 
+export const ingridientsReducer = (state = initialState.ingridients, action) => {
+    switch (action.type) {
+        case "GET_INGRIDIENTS": {
+            return {
+                ...state,
+                request: true,
+                requestFailed: false
+            }
+        }
+
+        case "GET_INGRIDIENTS_SUCCESS": {
+            return {
+                ...state,
+                ingridientsData: action.data,
+                requestFailed: false
+            }
+        }
+
+        case "GET_INGRIDIENTS_FAILED": {
+            return {
+                ...state,
+                requestFailed: true,
+                request: false
+            }
+        }
+        default: return state;
+    }
+}
+
 export const rootReducer = combineReducers({
     bun,
     topping,
-    ingridients,
+    ingridientsReducer,
     order,
     loading,
     openIngridientsForm,
     openOrderForm
 })
+
 
 

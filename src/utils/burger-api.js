@@ -5,7 +5,7 @@ export function checkApiError(res) {
     return Promise.reject(`Ошибка сервера -- ${res.status}`)
 }
 
-export function getIngridients(url) {
+export function getIngridientsData(url) {
     return fetch(url, {
         method: "GET",
         headers: {

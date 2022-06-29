@@ -12,6 +12,7 @@ import { useContext } from 'react';
 const IngridientsDetailsModal = Modal(IngredientDetails);
 
 function BurgerIngredients(props) {
+
     /*const [ingrFormIsOpened, openIngrForm] = React.useState(false);
     const [selectedIngridient, setIngridient] = React.useState(null);
     const [current, setCurrent] = React.useState("Булки");
