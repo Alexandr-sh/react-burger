@@ -7,11 +7,13 @@ import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-/*import { MainContext } from '../../services/mainContext.js';*/
+import { useSelector } from 'react-redux';
 
 const IngridientsDetailsModal = Modal(IngredientDetails);
 
 function BurgerIngredients(props) {
+
+    const store = useSelector(store => store)
 
     /*const [ingrFormIsOpened, openIngrForm] = React.useState(false);
     const [selectedIngridient, setIngridient] = React.useState(null);
