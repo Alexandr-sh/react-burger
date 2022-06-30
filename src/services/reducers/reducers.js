@@ -9,7 +9,11 @@ const initialState = {
         ingridientsData: []
     },
     topping: {},
-    orderDetails: {},
+    orderDetails: {
+        request: false,
+        requestFailed: false,
+        orderData: {}
+    },
     ingridientFormIsOpened: false,
     orderFormIsOpened: false,
     currentIngridient: {}
@@ -44,14 +48,6 @@ const topping = (state = initialState.topping, action) => {
     }
 }
 
-const order = (state = initialState.orderDetails, action) => {
-    switch (action.type) {
-        case "GET_ORDER_INFO": {
-            return action.data
-        }
-        default: return state;
-    }
-}
 
 const loading = (state = initialState.loading, action) => {
     switch (action.type) {
@@ -100,6 +96,36 @@ export const ingridients = (state = initialState.ingridients, action) => {
         }
 
         case "GET_INGRIDIENTS_FAILED": {
+            return {
+                ...state,
+                requestFailed: true,
+                request: false
+            }
+        }
+        default: return state;
+    }
+}
+
+export const order = (state = initialState.orderDetails, action) => {
+    switch (action.type) {
+        case "GET_ORDER": {
+            return {
+                ...state,
+                request: true,
+                requestFailed: false
+            }
+        }
+
+        case "GET_ORDER_SUCCESS": {
+            return {
+                ...state,
+                orderData: action.data,
+                requestFailed: false,
+                request:false
+            }
+        }
+
+        case "GET_ORDER_FAILED": {
             return {
                 ...state,
                 requestFailed: true,

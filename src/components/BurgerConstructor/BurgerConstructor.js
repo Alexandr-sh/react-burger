@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-/*import { MainContext } from '../../services/mainContext.js';
-import { OrderFormContext } from '../../services/orderFormContext.js';*/
+import { useSelector, useDispatch } from 'react-redux';
 import { getOrderData } from '../../utils/burger-api';
 
 const url = 'https://norma.nomoreparties.space/api/orders';
@@ -18,35 +17,20 @@ const OrderDetailsModal = Modal(OrderDetails);
 
 function BurgerConstructor(props) {
 
-    const [orderFormIsOpened, openOrderForm] = useState(false);
-
     const [totalPrice, setTotalPrice] = useState(0);
 
-    /*const getOrderInfo = () => {
-        const ingridients = []
-        ingridients.push(state.bun._id);
-        state.topping.forEach(element => {
-            ingridients.push(element._id);
-        });
-        getOrderData(url, { ingredients: ingridients })
-            .then(res => res.json())
-            .then(res => {
-                setOrderState({ name: res.name, number: res.order.number });
-                openOrderForm(true);
-            })
+
+    /*const closeOrderInfo = () => {
+        openOrderForm(false);
     }*/
 
-    const closeOrderInfo = () => {
-        openOrderForm(false);
-    }
-
-    useEffect(() => {
-       /* let newTotalPrice = state.bun.price * 2;
+    /*useEffect(() => {
+        let newTotalPrice = state.bun.price * 2;
         state.topping.forEach(element => {
             newTotalPrice += element.price;
         });
-        setTotalPrice(newTotalPrice);*/
-    })
+        setTotalPrice(newTotalPrice);
+    })*/
 
 
 

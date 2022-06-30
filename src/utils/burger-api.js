@@ -16,7 +16,7 @@ export function getIngridientsData(url) {
     })
 }
 
-export function getOrderData(url,ingridients) {
+export function getOrderInfo(url,ingridients) {
     return fetch(url,{
         method: "POST",
         headers: {

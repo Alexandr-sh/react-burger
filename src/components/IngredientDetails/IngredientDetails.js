@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Spec from './Spec';
 import { useSelector, useDispatch } from 'react-redux';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
+import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 
 
 function IngredientDetails(props){
@@ -19,6 +20,7 @@ function IngredientDetails(props){
 
     const close = () => {
         dispatch(openIngridientForm(false))
+        dispatch(changeCurrentIngridient({}))
     }
 
     return(
@@ -27,7 +29,7 @@ function IngredientDetails(props){
                 <div className={styles.container}>
                     <ModalOverlay closeModal={props.closeModal}/>
                     <div className={styles.ingredientDetails}>
-                        <button className={styles.button} onClick={props.closeModal}><CloseIcon type="primary" /></button>
+                        <button className={styles.button} onClick={close}><CloseIcon type="primary" /></button>
                         <h2 className={`${styles.header} text text_type_main-large`}>Детали ингридиента</h2>
                         <img src={ingridientData.image} className={styles.img} />
                         <h3 className={`${styles.name} text text_type_main-medium`}>{ingridientData.name}</h3>
