@@ -101,7 +101,7 @@ export const ingridients = (state = initialState.ingridients, action) => {
                 ...state,
                 ingridientsData: action.data,
                 requestFailed: false,
-                request:false
+                request: false
             }
         }
 
@@ -110,6 +110,22 @@ export const ingridients = (state = initialState.ingridients, action) => {
                 ...state,
                 requestFailed: true,
                 request: false
+            }
+        }
+
+        case "CHANGE_BUN": {
+            const newIngridients = [...state.ingridientsData]
+            newIngridients.forEach((item) => {
+                if (item.type === "bun") {
+                    if (item._id === action.data._id) {
+                        item.__v = 2
+                    }
+                    else item.__v = 0;
+                }
+            })
+            return {
+                ...state,
+                ingridientsData: newIngridients
             }
         }
         default: return state;
@@ -131,7 +147,7 @@ export const order = (state = initialState.orderDetails, action) => {
                 ...state,
                 orderData: action.data,
                 requestFailed: false,
-                request:false
+                request: false
             }
         }
 
