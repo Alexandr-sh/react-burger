@@ -1,4 +1,6 @@
-export const changeBun = (data) =>{
-    type: "CHANGE_BUN"
-    data: data
+export function changeBun(data) {
+    return {
+        type: "CHANGE_BUN",
+        data: data
+    }
 }

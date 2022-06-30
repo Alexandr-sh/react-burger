@@ -1,4 +1,4 @@
-export const openIngridientForm = (value)=>{
-    type: "OPEN_INGRIDIENT_FORM"
-    value: value
+export function openIngridientForm(value){
+    return {type: "OPEN_INGRIDIENT_FORM",
+    value: value}
 }

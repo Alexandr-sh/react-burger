@@ -18,18 +18,11 @@ const OrderDetailsModal = Modal(OrderDetails);
 
 function BurgerConstructor(props) {
 
-    const [orderState, setOrderState] = React.useState({
-        name: '',
-        number: 0
-    })
-
-    /*const state = useContext(MainContext);
-
     const [orderFormIsOpened, openOrderForm] = useState(false);
 
     const [totalPrice, setTotalPrice] = useState(0);
 
-    const getOrderInfo = () => {
+    /*const getOrderInfo = () => {
         const ingridients = []
         ingridients.push(state.bun._id);
         state.topping.forEach(element => {
@@ -41,25 +34,25 @@ function BurgerConstructor(props) {
                 setOrderState({ name: res.name, number: res.order.number });
                 openOrderForm(true);
             })
-    }
+    }*/
 
     const closeOrderInfo = () => {
         openOrderForm(false);
     }
 
     useEffect(() => {
-        let newTotalPrice = state.bun.price * 2;
+       /* let newTotalPrice = state.bun.price * 2;
         state.topping.forEach(element => {
             newTotalPrice += element.price;
         });
-        setTotalPrice(newTotalPrice);
+        setTotalPrice(newTotalPrice);*/
     })
 
 
 
     return (
         <div className={styles.burgerConstructor} >
-            <ConstructorElement
+            {/*<ConstructorElement
                 type="top"
                 isLocked={true}
                 text={state.bun.name}
@@ -93,9 +86,9 @@ function BurgerConstructor(props) {
             </div>
             <OrderFormContext.Provider value={orderState}>
                 <OrderDetailsModal isOpened={orderFormIsOpened} close={closeOrderInfo} />
-            </OrderFormContext.Provider>
+        </OrderFormContext.Provider>*/}
         </div>
-    )*/
+    )
 }
 
 BurgerConstructor.propTypes = {

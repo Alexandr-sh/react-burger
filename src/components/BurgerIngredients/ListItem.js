@@ -3,34 +3,36 @@ import styles from './ListItem.module.css';
 import { Typography } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
+import { useDispatch } from 'react-redux';
+import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
+import { changeBun } from '../../services/actions/changeBun';
+import { openIngridientForm } from '../../services/actions/openIngridientForm';
 
 import PropTypes from 'prop-types';
 
+function ListItem(props){
 
-class ListItem extends React.Component {
-    constructor(props) {
-        super(props);
+    const dispatch = useDispatch();
+
+    const handleClick = () =>{
+        if (props.data.type === 'bun') dispatch(changeBun(props.data))
+        dispatch(changeCurrentIngridient(props.data))
+        dispatch(openIngridientForm(true))
     }
 
-    handleClick = () => {
-        this.props.selectIngridient(this.props.data);
-      }
-
-
-
-    render() {
-        return <div className={styles.listItem} onClick={this.handleClick}>
-            {this.props.data.__v > 0 ? (
-                <Counter count={this.props.data.__v} size="default" />
+    return (
+        <div className={styles.listItem} onClick={handleClick}>
+            {props.data.__v > 0 ? (
+                <Counter count={props.data.__v} size="default" />
             ) : null}
-            <img src={this.props.data.image} className={styles.image} />
+            <img src={props.data.image} className={styles.image} />
             <div className={styles.price}>
-                <div className={`text text_type_digits-default ${styles.value}`}>{this.props.data.price}</div>
+                <div className={`text text_type_digits-default ${styles.value}`}>{props.data.price}</div>
                 <CurrencyIcon type="primary" />
             </div>
-            <div className={styles.name}>{this.props.data.name}</div>
-        </div>;
-    }
+            <div className={styles.name}>{props.data.name}</div>
+        </div>
+    )
 }
 
 ListItem.propTypes = {

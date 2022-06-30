@@ -1,4 +1,6 @@
-export const getOrderInfo = (data)=>{
-    type: "GET_ORDER_INFO"
-    data: data
+export function getOrderInfo(data) {
+    return {
+        type: "GET_ORDER_INFO",
+        data: data
+    }
 }

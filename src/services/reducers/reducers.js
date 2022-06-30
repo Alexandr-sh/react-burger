@@ -11,7 +11,17 @@ const initialState = {
     topping: {},
     orderDetails: {},
     ingridientFormIsOpened: false,
-    orderFormIsOpened: false
+    orderFormIsOpened: false,
+    currentIngridient: {}
+}
+
+const currentIngridient = (state = initialState.currentIngridient, action) => {
+    switch (action.type) {
+        case "CHANGE_CURRENT_INGRIDIENT": {
+            return action.data
+        }
+        default: return state;
+    }
 }
 
 
@@ -52,7 +62,7 @@ const loading = (state = initialState.loading, action) => {
     }
 }
 
-const openIngridientsForm = (state = initialState.ingridientFormIsOpened, action) => {
+const openIngridientForm = (state = initialState.ingridientFormIsOpened, action) => {
     switch (action.type) {
         case "OPEN_INGRIDIENT_FORM": {
             return action.value
@@ -70,7 +80,7 @@ const openOrderForm = (state = initialState.orderFormIsOpened, action) => {
     }
 }
 
-export const ingridientsReducer = (state = initialState.ingridients, action) => {
+export const ingridients = (state = initialState.ingridients, action) => {
     switch (action.type) {
         case "GET_INGRIDIENTS": {
             return {
@@ -84,7 +94,8 @@ export const ingridientsReducer = (state = initialState.ingridients, action) => 
             return {
                 ...state,
                 ingridientsData: action.data,
-                requestFailed: false
+                requestFailed: false,
+                request:false
             }
         }
 
@@ -102,11 +113,12 @@ export const ingridientsReducer = (state = initialState.ingridients, action) => 
 export const rootReducer = combineReducers({
     bun,
     topping,
-    ingridientsReducer,
+    ingridients,
     order,
     loading,
-    openIngridientsForm,
-    openOrderForm
+    openIngridientForm,
+    openOrderForm,
+    currentIngridient
 })
 
 
