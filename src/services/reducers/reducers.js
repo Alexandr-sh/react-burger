@@ -8,7 +8,7 @@ const initialState = {
         requestFailed: false,
         ingridientsData: []
     },
-    topping: {},
+    topping: [],
     orderDetails: {
         request: false,
         requestFailed: false,
@@ -16,7 +16,17 @@ const initialState = {
     },
     ingridientFormIsOpened: false,
     orderFormIsOpened: false,
-    currentIngridient: {}
+    currentIngridient: {},
+    totalPrice: 0
+}
+
+const totalPrice = (state, action) => {
+    switch (action.type) {
+        case "CHANGE_TOTAL_PRICE": {
+            return action.value
+        }
+        default: return state;
+    }
 }
 
 const currentIngridient = (state = initialState.currentIngridient, action) => {

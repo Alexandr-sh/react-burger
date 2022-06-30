@@ -7,10 +7,15 @@ import { useDispatch } from 'react-redux';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 import { changeBun } from '../../services/actions/changeBun';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
+import { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
 function ListItem(props){
+
+    /*useEffect(() => {
+        console.log(props.data)
+    })*/
 
     const dispatch = useDispatch();
 

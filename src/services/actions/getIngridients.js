@@ -1,5 +1,6 @@
 import { getIngridientsData } from "../../utils/burger-api"
 import { url } from "../../utils/constants"
+import { changeBun } from '../../services/actions/changeBun';
 
 
 
@@ -21,6 +22,14 @@ export const getIngridients = () => {
             return res.json()
         }).then(res => {
             dispatch(getIngridientsSuccess(res.data))
+            let initialBun = {}
+            for (let i = 0; i < res.data.length; ++i) {
+                if (res.data[i].type === "bun") {
+                    initialBun = res.data[i];
+                    break;
+                }
+            }
+            dispatch(changeBun(initialBun))
         }).catch(err => {
             console.log(err)
             dispatch({
