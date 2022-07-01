@@ -25,6 +25,7 @@ function ListItem(props){
         dispatch(openIngridientForm(true))
     }
 
+
     return (
         <div className={styles.listItem} onClick={handleClick}>
             {props.data.__v > 0 ? (

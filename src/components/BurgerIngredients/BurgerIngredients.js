@@ -28,10 +28,13 @@ function BurgerIngredients(props) {
 
     const [current, setCurrent] = React.useState("Булки");
 
+    const handleScroll = (e) =>{
+        console.log(e)
+    }
 
     return(
         !request&&
-        <div className={styles.burgerIngridients}>
+        <div className={styles.burgerIngridients} onScroll={handleScroll}>
             <h2 className={`${styles.title} text text_type_main-large`}>Соберите бургер</h2>
             <div className={styles.selector}>
                 <Tab value="Булки" active={current === "Булки"} onClick={setCurrent}>
