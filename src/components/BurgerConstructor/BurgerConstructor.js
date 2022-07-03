@@ -9,13 +9,13 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useState, useRef, useCallback } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { getOrderData } from '../../utils/burger-api';
 import { useDrop } from "react-dnd";
 
 import { changeBun } from '../../services/actions/changeBun';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 import { addTopping } from '../../services/actions/changeTopping';
 import { updateTopping } from '../../services/actions/changeTopping';
+import { getOrderData } from '../../services/actions/getOrderInfo';
 
 import BurgerConstructorElement from './BurgerConstructorElement';
 
@@ -62,7 +62,9 @@ function BurgerConstructor(props) {
         setTotalPrice(newTotalPrice);
     })
 
-    const getOrderInfo = () => { }
+    const getOrderInfo = () => {
+        dispatch(getOrderData([...topping,bun]))
+     }
 
     const moveListItem = useCallback(
         (dragIndex, hoverIndex) => {

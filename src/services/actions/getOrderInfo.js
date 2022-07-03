@@ -13,9 +13,11 @@ export const getOrderData = (ingridients) => {
         dispatch({
             type: "GET_ORDER"
         })
-        getOrderInfo(url,ingridients).then(res => {
+        console.log(ingridients)
+        getOrderInfo(orderUrl,ingridients).then(res => {
             return res.json()
         }).then(res => {
+            console.log(res)
             dispatch(getOrderSuccess(res.data))
         }).catch(err => {
             console.log(err)
