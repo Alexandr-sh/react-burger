@@ -128,6 +128,19 @@ export const ingridients = (state = initialState.ingridients, action) => {
                 ingridientsData: newIngridients
             }
         }
+
+        case "ADD_TOPPING": {
+            const newIngridients = [...state.ingridientsData]
+            newIngridients.forEach((item) => {
+                if (item._id === action.data._id) {
+                    item.__v = item.__v + 1
+                }
+            })
+            return {
+                ...state,
+                ingridientsData: newIngridients
+            }
+        }
         default: return state;
     }
 }

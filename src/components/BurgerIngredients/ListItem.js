@@ -8,14 +8,20 @@ import { changeCurrentIngridient } from '../../services/actions/changeCurrentIng
 import { changeBun } from '../../services/actions/changeBun';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
 import { useEffect } from 'react';
+import { useDrag } from "react-dnd";
 
 import PropTypes from 'prop-types';
 
 function ListItem(props){
 
     /*useEffect(() => {
-        console.log(props.data)
+        console.log(props.key)
     })*/
+
+    const [, dragRef] = useDrag({
+        type: "ingridient",
+        item: props.data
+    });
 
     const dispatch = useDispatch();
 
@@ -27,7 +33,7 @@ function ListItem(props){
 
 
     return (
-        <div className={styles.listItem} onClick={handleClick}>
+        <div className={styles.listItem} onClick={handleClick} ref={dragRef}>
             {props.data.__v > 0 ? (
                 <Counter count={props.data.__v} size="default" />
             ) : null}

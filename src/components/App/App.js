@@ -12,6 +12,9 @@ import BurgerIngredients from '../BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 
 const IngredientModal = Modal(IngredientDetails);
 
@@ -20,13 +23,15 @@ const IngredientModal = Modal(IngredientDetails);
 
 const App = () => {
   return (
-    <div className={`${styles.App} text text_type_main-default`}>
-      <AppHeader />
-      <div className={styles.content}>
-        <BurgerIngredients />
-        <BurgerConstructor />
-      </div>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className={`${styles.App} text text_type_main-default`}>
+        <AppHeader />
+        <div className={styles.content}>
+          <BurgerIngredients />
+          <BurgerConstructor />
+        </div>
+      </div >
+    </DndProvider>
   )
 }
 

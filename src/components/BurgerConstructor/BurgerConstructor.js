@@ -10,6 +10,12 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { getOrderData } from '../../utils/burger-api';
+import { useDrop } from "react-dnd";
+
+import { changeBun } from '../../services/actions/changeBun';
+import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
+import { addTopping } from '../../services/actions/changeTopping';
+
 
 const url = 'https://norma.nomoreparties.space/api/orders';
 
@@ -20,6 +26,17 @@ const OrderDetailsModal = Modal(OrderDetails);
 function BurgerConstructor(props) {
 
     const [totalPrice, setTotalPrice] = useState(0);
+
+    const dispatch = useDispatch();
+
+    const [, dropTarget] = useDrop({
+        accept: "ingridient",
+        drop(ingridientData) {
+            if (ingridientData.type === 'bun') dispatch(changeBun(ingridientData))
+            if (ingridientData.type !== 'bun') dispatch(addTopping(ingridientData))
+            dispatch(changeCurrentIngridient(ingridientData))
+        },
+    });
 
     const { request, order, openOrderForm, topping, bun } = useSelector(store => ({
         request: store.ingridients.request,
@@ -40,7 +57,7 @@ function BurgerConstructor(props) {
     const getOrderInfo = () => { }
 
     return (
-        <div className={styles.burgerConstructor} >
+        <div className={styles.burgerConstructor} ref={dropTarget}>
             <ConstructorElement
                 type="top"
                 isLocked={true}
