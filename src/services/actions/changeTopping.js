@@ -3,7 +3,12 @@ export function addTopping(data){
     data: data}
 }
 
-export function removeTopping(id){
+export function removeTopping(data){
     return {type: "REMOVE_TOPPING",
-    id: id}
+    data: data}
+}
+
+export function updateTopping(data){
+    return {type: "UPDATE_TOPPING",
+    data: data}
 }

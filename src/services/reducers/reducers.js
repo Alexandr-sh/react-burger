@@ -54,6 +54,13 @@ const topping = (state = initialState.topping, action) => {
         case "ADD_TOPPING": {
             return [...state, action.data]
         }
+        case "UPDATE_TOPPING": {
+            return [...action.data]
+        }
+        case "REMOVE_TOPPING": {
+            const newData = state.filter(item => item.index != action.data.index);
+            return [...newData]
+        }
         default: return state;
     }
 }
@@ -134,6 +141,19 @@ export const ingridients = (state = initialState.ingridients, action) => {
             newIngridients.forEach((item) => {
                 if (item._id === action.data._id) {
                     item.__v = item.__v + 1
+                }
+            })
+            return {
+                ...state,
+                ingridientsData: newIngridients
+            }
+        }
+
+        case "REMOVE_TOPPING": {
+            const newIngridients = [...state.ingridientsData]
+            newIngridients.forEach((item) => {
+                if (item._id === action.data._id) {
+                    item.__v = item.__v - 1
                 }
             })
             return {

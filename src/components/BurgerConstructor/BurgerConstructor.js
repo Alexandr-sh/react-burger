@@ -7,7 +7,7 @@ import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { getOrderData } from '../../utils/burger-api';
 import { useDrop } from "react-dnd";
@@ -15,6 +15,7 @@ import { useDrop } from "react-dnd";
 import { changeBun } from '../../services/actions/changeBun';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 import { addTopping } from '../../services/actions/changeTopping';
+import { updateTopping } from '../../services/actions/changeTopping';
 
 import BurgerConstructorElement from './BurgerConstructorElement';
 
@@ -37,7 +38,10 @@ function BurgerConstructor(props) {
         accept: "ingridient",
         drop(ingridientData) {
             if (ingridientData.type === 'bun') dispatch(changeBun(ingridientData))
-            if (ingridientData.type !== 'bun') dispatch(addTopping(ingridientData))
+            if (ingridientData.type !== 'bun') {
+                ingridientData.index = topping.length
+                dispatch(addTopping(ingridientData))
+            }
             dispatch(changeCurrentIngridient(ingridientData))
         },
     });
@@ -60,6 +64,20 @@ function BurgerConstructor(props) {
 
     const getOrderInfo = () => { }
 
+    const moveListItem = useCallback(
+        (dragIndex, hoverIndex) => {
+            const dragItem = topping[dragIndex]
+            const hoverItem = topping[hoverIndex]
+
+            const updatedTopping = [...topping]
+            updatedTopping[dragIndex] = hoverItem
+            updatedTopping[hoverIndex] = dragItem
+
+            dispatch(updateTopping(updatedTopping))
+        },
+        [topping],
+    )
+
     return (
         <div className={styles.burgerConstructor} ref={dropTarget}>
             <ConstructorElement
@@ -69,7 +87,6 @@ function BurgerConstructor(props) {
                 price={bun.price}
                 thumbnail={bun.image}
                 key={bun._id}
-                handleClose={() => {console.log(12)}}
             />
             {
                 topping.map((ingridient, index) => (
@@ -79,8 +96,9 @@ function BurgerConstructor(props) {
                         price={ingridient.price}
                         thumbnail={ingridient.image}
                         key={index}
-                        index={index}
-                        handleClose={(e) => {console.log(ingridient)}}
+                        index={ingridient.index}
+                        moveListItem={moveListItem}
+                        _id={ingridient._id}
                     />
                 ))
             }
@@ -97,7 +115,7 @@ function BurgerConstructor(props) {
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={getOrderInfo}>Оформить заказ</button>
             </div>
-            <OrderDetailsModal/>
+            <OrderDetailsModal />
         </div>
     )
 }
