@@ -6,13 +6,18 @@ import ListItem from './ListItem.js';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIngridients } from '../../services/actions/getIngridients';
 
 const IngridientsDetailsModal = Modal(IngredientDetails);
 
 function BurgerIngredients(props) {
+
+    const thisRef = useRef(null);
+    const bunsRef = useRef(null);
+    const saucesRef = useRef(null);
+    const toppingRef = useRef(null);
 
     const {request, ingridients, openIngridientForm} = useSelector(store => ({
         request: store.ingridients.request,
@@ -26,15 +31,21 @@ function BurgerIngredients(props) {
         dispatch(getIngridients())
     }, [])
 
-    const [current, setCurrent] = React.useState("Булки");
+    const [current, setCurrent] = useState("Булки");
 
     const handleScroll = (e) =>{
-        console.log(e)
+        e.stopPropagation()
+        const scrollPosition = thisRef.current.scrollTop
+        const saucesLevel = saucesRef.current.offsetTop
+        const toppingLevel = toppingRef.current.offsetTop
+        if (scrollPosition <= saucesLevel) setCurrent("Булки")
+        if ((scrollPosition > saucesLevel)&(scrollPosition <= toppingLevel)) setCurrent("Соусы")
+        if (scrollPosition > toppingLevel) setCurrent("Начинки")
     }
 
     return(
         !request&&
-        <div className={styles.burgerIngridients} onScroll={handleScroll}>
+        <div className={styles.burgerIngridients} onScroll={handleScroll} ref={thisRef}>
             <h2 className={`${styles.title} text text_type_main-large`}>Соберите бургер</h2>
             <div className={styles.selector}>
                 <Tab value="Булки" active={current === "Булки"} onClick={setCurrent}>
@@ -47,7 +58,7 @@ function BurgerIngredients(props) {
                     Начинки
                 </Tab>
             </div>
-            <h3 className={`${styles.title} text text_type_main-medium`}>Булки</h3>
+            <h3 className={`${styles.title} text text_type_main-medium`} ref={bunsRef}>Булки</h3>
             <div className={styles.ingridientsList} >
                 {ingridients.map((ingridient, index) => (
                     ingridient.type === "bun" && (
@@ -55,7 +66,7 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
-            <h3 className={`${styles.title} text text_type_main-medium`}>Соусы</h3>
+            <h3 className={`${styles.title} text text_type_main-medium`} ref={saucesRef}>Соусы</h3>
             <div className={styles.ingridientsList} >
                 {ingridients.map((ingridient, index) => (
                     ingridient.type === "sauce" && (
@@ -63,7 +74,7 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
-            <h3 className={`${styles.title} text text_type_main-medium`}>Начинки</h3>
+            <h3 className={`${styles.title} text text_type_main-medium`} ref={toppingRef}>Начинки</h3>
             <div className={styles.ingridientsList} >
                 {ingridients.map((ingridient, index) => (
                     ingridient.type === "main" && (
