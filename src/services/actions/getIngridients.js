@@ -1,13 +1,16 @@
 import { getIngridientsData } from "../../utils/burger-api"
 import { url } from "../../utils/constants"
 import { changeBun } from '../../services/actions/changeBun';
+import { GET_INGRIDIENTS_SUCCESS } from "../../utils/constants";
+import { GET_INGRIDIENTS } from "../../utils/constants";
+import { GET_INGRIDIENTS_FAILED } from "../../utils/constants";
 
 
 
 
 function getIngridientsSuccess(data) {
     return {
-        type: "GET_INGRIDIENTS_SUCCESS",
+        type: GET_INGRIDIENTS_SUCCESS,
         data: data
     }
 }
@@ -16,7 +19,7 @@ function getIngridientsSuccess(data) {
 export const getIngridients = () => {
     return function (dispatch) {
         dispatch({
-            type: "GET_INGRIDIENTS"
+            type: GET_INGRIDIENTS
         })
         getIngridientsData(url).then(res => {
             return res.json()
@@ -33,7 +36,7 @@ export const getIngridients = () => {
         }).catch(err => {
             console.log(err)
             dispatch({
-                type: "GET_INGRIDIENTS_FAILED"
+                type: GET_INGRIDIENTS_FAILED
             })
         })
 

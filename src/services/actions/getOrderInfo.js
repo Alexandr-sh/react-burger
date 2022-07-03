@@ -1,10 +1,13 @@
 import { getOrderInfo } from "../../utils/burger-api"
 import { orderUrl } from "../../utils/constants"
 import openOrderForm from "../actions/openOrderForm"
+import { GET_ORDER_SUCCESS } from "../../utils/constants"
+import { GET_ORDER } from "../../utils/constants"
+import { GET_ORDER_FAILED } from "../../utils/constants"
 
 function getOrderSuccess(data) {
     return {
-        type: "GET_ORDER_SUCCESS",
+        type: GET_ORDER_SUCCESS,
         data: data
     }
 }
@@ -12,7 +15,7 @@ function getOrderSuccess(data) {
 export const getOrderData = (ingridients) => {
     return function (dispatch) {
         dispatch({
-            type: "GET_ORDER"
+            type: GET_ORDER
         })
         getOrderInfo(orderUrl,ingridients).then(res => {
             return res.json()
@@ -22,7 +25,7 @@ export const getOrderData = (ingridients) => {
         }).catch(err => {
             console.log(err)
             dispatch({
-                type: "GET_ORDER_FAILED"
+                type: GET_ORDER_FAILED
             })
         })
 
