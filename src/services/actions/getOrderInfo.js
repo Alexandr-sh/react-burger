@@ -1,5 +1,6 @@
 import { getOrderInfo } from "../../utils/burger-api"
 import { orderUrl } from "../../utils/constants"
+import openOrderForm from "../actions/openOrderForm"
 
 function getOrderSuccess(data) {
     return {
@@ -13,12 +14,11 @@ export const getOrderData = (ingridients) => {
         dispatch({
             type: "GET_ORDER"
         })
-        console.log(ingridients)
         getOrderInfo(orderUrl,ingridients).then(res => {
             return res.json()
         }).then(res => {
-            console.log(res)
-            dispatch(getOrderSuccess(res.data))
+            dispatch(getOrderSuccess(res))
+            dispatch(openOrderForm(true))
         }).catch(err => {
             console.log(err)
             dispatch({

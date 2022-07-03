@@ -20,6 +20,36 @@ const initialState = {
     totalPrice: 0
 }
 
+export const order = (state = initialState.orderDetails, action) => {
+    switch (action.type) {
+        case "GET_ORDER": {
+            return {
+                ...state,
+                request: true,
+                requestFailed: false
+            }
+        }
+
+        case "GET_ORDER_SUCCESS": {
+            return {
+                ...state,
+                orderData: action.data,
+                requestFailed: false,
+                request: false
+            }
+        }
+
+        case "GET_ORDER_FAILED": {
+            return {
+                ...state,
+                requestFailed: true,
+                request: false
+            }
+        }
+        default: return state;
+    }
+}
+
 const totalPrice = (state, action) => {
     switch (action.type) {
         case "CHANGE_TOTAL_PRICE": {
@@ -159,36 +189,6 @@ export const ingridients = (state = initialState.ingridients, action) => {
             return {
                 ...state,
                 ingridientsData: newIngridients
-            }
-        }
-        default: return state;
-    }
-}
-
-export const order = (state = initialState.orderDetails, action) => {
-    switch (action.type) {
-        case "GET_ORDER": {
-            return {
-                ...state,
-                request: true,
-                requestFailed: false
-            }
-        }
-
-        case "GET_ORDER_SUCCESS": {
-            return {
-                ...state,
-                orderData: action.data,
-                requestFailed: false,
-                request: false
-            }
-        }
-
-        case "GET_ORDER_FAILED": {
-            return {
-                ...state,
-                requestFailed: true,
-                request: false
             }
         }
         default: return state;

@@ -46,12 +46,14 @@ function BurgerConstructor(props) {
         },
     });
 
-    const { request, order, openOrderForm, topping, bun } = useSelector(store => ({
+    const { request, order, orderFormIsOpened, topping, bun, store } = useSelector(store => ({
         request: store.ingridients.request,
         ingridients: store.ingridients.ingridientsData,
-        openIngridientForm: store.openIngridientForm,
+        orderFormIsOpened: store.openOrderForm,
         topping: store.topping,
-        bun: store.bun
+        bun: store.bun,
+        order: store.order.orderData.order,
+        store:store
     }), shallowEqual)
 
     useEffect(() => {
@@ -63,7 +65,8 @@ function BurgerConstructor(props) {
     })
 
     const getOrderInfo = () => {
-        dispatch(getOrderData([...topping,bun]))
+        const ingridients = [...topping,bun]
+        dispatch(getOrderData({ ingredients: ingridients }))
      }
 
     const moveListItem = useCallback(

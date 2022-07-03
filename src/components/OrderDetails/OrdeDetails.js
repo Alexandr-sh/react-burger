@@ -4,19 +4,21 @@ import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import openOrderForm from "../../services/actions/openOrderForm"
+import { useEffect } from 'react';
 
 function OrderDetails(props){
 
-    /*const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    const {isOpened , ingridientData} = useSelector(store => ({
-        isOpened: store.openIngridientForm,
-        ingridientData: store.currentIngridient
+    const {isOpened , order, request} = useSelector(store => ({
+        isOpened: store.openOrderForm,
+        order: store.order.orderData.order
     }))
 
     const close = () => {
-        dispatch(openIngridientForm(false))
-        dispatch(changeCurrentIngridient({}))
+        dispatch(openOrderForm(false))
     }
 
     return (
@@ -26,8 +28,8 @@ function OrderDetails(props){
                     <ModalOverlay closeModal={close}/>
                     <div className={styles.orderDetails}>
                         <button className={styles.button} onClick={close}><CloseIcon type="primary" /></button>
-                        <h2 className={`${styles.header} text text_type_digits-large`}>034536</h2>
-                        <h3 className={`${styles.subHeading} text text_type_main-medium`}>{state.number}</h3>
+                        <h2 className={`${styles.header} text text_type_digits-large`}>{order.number}</h2>
+                        <h3 className={`${styles.subHeading} text text_type_main-medium`}>{order.number}</h3>
                         <img src={doneImgPath} className={styles.doneImg}/>
                         <div className={`${styles.status} text text_type_main-medium`}>Ваш заказ начали готовить</div>
                         <div className={`${styles.statusDescr} text text_type_main-medium`}>Дождитесь готовности на орбитальной станции</div>
@@ -35,7 +37,7 @@ function OrderDetails(props){
                 </div>
             )}
         </>
-    )*/
+    )
 }
 
 
