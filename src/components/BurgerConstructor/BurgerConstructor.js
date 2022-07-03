@@ -7,7 +7,7 @@ import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { getOrderData } from '../../utils/burger-api';
 import { useDrop } from "react-dnd";
@@ -15,6 +15,8 @@ import { useDrop } from "react-dnd";
 import { changeBun } from '../../services/actions/changeBun';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 import { addTopping } from '../../services/actions/changeTopping';
+
+import BurgerConstructorElement from './BurgerConstructorElement';
 
 
 const url = 'https://norma.nomoreparties.space/api/orders';
@@ -24,6 +26,8 @@ const OrderDetailsModal = Modal(OrderDetails);
 
 
 function BurgerConstructor(props) {
+
+    const inputRef = useRef(null);
 
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -65,15 +69,18 @@ function BurgerConstructor(props) {
                 price={bun.price}
                 thumbnail={bun.image}
                 key={bun._id}
+                handleClose={() => {console.log(12)}}
             />
             {
                 topping.map((ingridient, index) => (
-                    <ConstructorElement
+                    <BurgerConstructorElement
                         isLocked={false}
                         text={ingridient.name}
                         price={ingridient.price}
                         thumbnail={ingridient.image}
                         key={index}
+                        index={index}
+                        handleClose={(e) => {console.log(ingridient)}}
                     />
                 ))
             }

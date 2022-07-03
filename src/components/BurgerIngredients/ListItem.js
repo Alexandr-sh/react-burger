@@ -26,7 +26,6 @@ function ListItem(props){
     const dispatch = useDispatch();
 
     const handleClick = () =>{
-        if (props.data.type === 'bun') dispatch(changeBun(props.data))
         dispatch(changeCurrentIngridient(props.data))
         dispatch(openIngridientForm(true))
     }
