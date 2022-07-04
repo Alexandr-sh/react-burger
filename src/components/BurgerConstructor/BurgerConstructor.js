@@ -20,7 +20,6 @@ import { getOrderData } from '../../services/actions/getOrderInfo';
 import BurgerConstructorElement from './BurgerConstructorElement';
 
 
-const url = 'https://norma.nomoreparties.space/api/orders';
 
 const OrderDetailsModal = Modal(OrderDetails);
 

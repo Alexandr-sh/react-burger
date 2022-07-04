@@ -1,5 +1,4 @@
-export const url = 'https://norma.nomoreparties.space/api/ingredients';
-export const orderUrl = 'https://norma.nomoreparties.space/api/orders';
+export const baseUrl = 'https://norma.nomoreparties.space/api';
 
 export const CHANGE_BUN = "CHANGE_BUN"
 export const CHANGE_CURRENT_INGRIDIENT = "CHANGE_CURRENT_INGRIDIENT"
