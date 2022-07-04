@@ -35,7 +35,6 @@ const Modal = WrappedComponent => {
                     closeModal={this.close}
                     openModal={this.open}
                     isOpened={this.state.isOpened}
-                    close={this.props.close}
                 />
             )
         }
