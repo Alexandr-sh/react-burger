@@ -4,6 +4,7 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import openOrderForm from "../../services/actions/openOrderForm"
+import { useEffect } from 'react';
 
 function OrderDetails(props){
 
@@ -13,6 +14,8 @@ function OrderDetails(props){
         isOpened: store.openOrderForm,
         order: store.order.orderData.order
     }))
+
+
 
     const close = () => {
         dispatch(openOrderForm(false))

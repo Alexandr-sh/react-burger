@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Modal.module.css'
+import ModalOverlay from '../ModalOverlay/ModalOverlay';
 
 const Modal = WrappedComponent => {
     return class extends React.Component {

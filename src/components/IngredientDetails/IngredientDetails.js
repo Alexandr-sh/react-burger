@@ -27,7 +27,7 @@ function IngredientDetails(props){
         <>
             {isOpened && (
                 <div className={styles.container}>
-                    <ModalOverlay closeModal={props.closeModal}/>
+                    <ModalOverlay closeModal={close}/>
                     <div className={styles.ingredientDetails}>
                         <button className={styles.button} onClick={close}><CloseIcon type="primary" /></button>
                         <h2 className={`${styles.header} text text_type_main-large`}>Детали ингридиента</h2>
