@@ -46,11 +46,4 @@ function IngredientDetails(props){
     )
 }
 
-
-IngredientDetails.propTypes = {
-    isOpened: PropTypes.bool,
-    closeModal: PropTypes.func,
-    data: PropTypes.object
-  }; 
-
 export default IngredientDetails;

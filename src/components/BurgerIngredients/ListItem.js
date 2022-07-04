@@ -9,6 +9,7 @@ import { changeBun } from '../../services/actions/changeBun';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
 import { useEffect } from 'react';
 import { useDrag } from "react-dnd";
+import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
 
 import PropTypes from 'prop-types';
 
@@ -47,7 +48,7 @@ function ListItem(props){
 }
 
 ListItem.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
 };
 
 export default ListItem;

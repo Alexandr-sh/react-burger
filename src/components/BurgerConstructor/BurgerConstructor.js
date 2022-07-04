@@ -16,9 +16,10 @@ import { changeCurrentIngridient } from '../../services/actions/changeCurrentIng
 import { addTopping } from '../../services/actions/changeTopping';
 import { updateTopping } from '../../services/actions/changeTopping';
 import { getOrderData } from '../../services/actions/getOrderInfo';
+import { v4 as uuidv4 } from 'uuid';
 
 import BurgerConstructorElement from './BurgerConstructorElement';
-
+import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
 
 
 const OrderDetailsModal = Modal(OrderDetails);
@@ -99,7 +100,7 @@ function BurgerConstructor(props) {
                         text={ingridient.name}
                         price={ingridient.price}
                         thumbnail={ingridient.image}
-                        key={index}
+                        key={uuidv4()}
                         index={ingridient.index}
                         moveListItem={moveListItem}
                         _id={ingridient._id}
@@ -125,8 +126,8 @@ function BurgerConstructor(props) {
 }
 
 BurgerConstructor.propTypes = {
-    data: PropTypes.array,
-    bun: PropTypes.object
+    data: PropTypes.arrayOf(PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES)).isRequired,
+    bun: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
 };
 
 export default BurgerConstructor;

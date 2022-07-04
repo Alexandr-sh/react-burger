@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Modal.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
+import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
 
 const Modal = WrappedComponent => {
     return class extends React.Component {
@@ -44,8 +45,8 @@ const Modal = WrappedComponent => {
 };
 
 Modal.propTypes = {
-    isOpened: PropTypes.bool,
-    data: PropTypes.object
+    isOpened: PropTypes.bool.isRequired,
+    data: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
 };
 
 export default Modal;
