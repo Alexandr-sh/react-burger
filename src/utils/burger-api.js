@@ -11,9 +11,7 @@ export function getIngridientsData(url) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => checkApiError(res)).catch((err) => {
-        console.log(`Ошибка: ${err}`);
-    })
+    }).then(res => checkApiError(res))
 }
 
 export function getOrderInfo(url,ingridients) {

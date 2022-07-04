@@ -1,12 +1,9 @@
-import React from 'react';
 import styles from './OrderDetails.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import doneImgPath from '../../images/done.png'
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import openOrderForm from "../../services/actions/openOrderForm"
-import { useEffect } from 'react';
 
 function OrderDetails(props){
 
@@ -39,11 +36,5 @@ function OrderDetails(props){
         </>
     )
 }
-
-
-OrderDetails.propTypes = {
-    closeModal: PropTypes.func,
-    isOpened: PropTypes.bool
-}; 
 
 export default OrderDetails;
