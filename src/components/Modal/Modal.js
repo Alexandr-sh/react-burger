@@ -1,47 +1,24 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import styles from './Modal.module.css'
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
+import { useState,useEffect } from 'react';
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
-const Modal = WrappedComponent => {
-    return class extends React.Component {
-        constructor(props) {
-            super(props);
-
-            this.state = {
-                isOpened: false
-            }
-        }
-
-        open = () => {
-            this.setState({
-                isOpened: true
-            })
-        };
-
-
-        close = () => {
-            this.setState({
-                isOpened: false
-            })
-        };
-
-        componentDidUpdate(prevProps, prevState) {
-            if (this.props.isOpened != prevState.isOpened) this.setState({ isOpened: this.props.isOpened })
-        }
-
-        render() {
-            return (
-                <WrappedComponent
-                    data={this.props.data}
-                    closeModal={this.close}
-                    openModal={this.open}
-                    isOpened={this.state.isOpened}
-                />
-            )
-        }
-    }
+const Modal = (props) => {
+    if (!props.isOpen) return null;
+    return ReactDOM.createPortal(
+        <div className={styles.container}>
+            <ModalOverlay closeModal={props.onClose} />
+            <div className={styles.orderDetails}>
+                <button className={styles.button} onClick={props.onClose}><CloseIcon type="primary" /></button>
+                props.children
+            </div>
+        </div>,
+        document.body
+    );
 };
 
 Modal.propTypes = {

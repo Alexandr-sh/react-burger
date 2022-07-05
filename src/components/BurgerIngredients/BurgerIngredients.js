@@ -10,7 +10,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIngridients } from '../../services/actions/getIngridients';
 
-const IngridientsDetailsModal = Modal(IngredientDetails);
+
 
 function BurgerIngredients(props) {
 
@@ -82,7 +82,6 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
-            {<IngridientsDetailsModal/>}
         </div>
     )
 }

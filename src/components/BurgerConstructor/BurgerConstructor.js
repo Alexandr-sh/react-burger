@@ -22,7 +22,7 @@ import BurgerConstructorElement from './BurgerConstructorElement';
 import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
 
 
-const OrderDetailsModal = Modal(OrderDetails);
+/*const OrderDetailsModal = Modal(OrderDetails);*/
 
 
 
@@ -120,7 +120,6 @@ function BurgerConstructor(props) {
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={getOrderInfo}>Оформить заказ</button>
             </div>
-            <OrderDetailsModal />
         </div>
     )
 }
