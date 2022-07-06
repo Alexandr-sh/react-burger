@@ -82,6 +82,7 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
+            <Modal isOpen={openIngridientForm}></Modal>
         </div>
     )
 }
