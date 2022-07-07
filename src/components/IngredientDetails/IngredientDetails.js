@@ -7,8 +7,15 @@ import Spec from './Spec';
 import { useSelector, useDispatch } from 'react-redux';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
+import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
+import { useEffect } from 'react';
 
 function IngredientDetails(props) {
+
+    useEffect(() => {
+        console.log(props)
+    })
+
     return (
         <>
             <div className={styles.ingredientDetails}>

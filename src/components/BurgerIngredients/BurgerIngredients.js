@@ -19,10 +19,11 @@ function BurgerIngredients(props) {
     const saucesRef = useRef(null);
     const toppingRef = useRef(null);
 
-    const {request, ingridients, openIngridientForm} = useSelector(store => ({
+    const {request, ingridients, openIngridientForm, currentIngridient} = useSelector(store => ({
         request: store.ingridients.request,
         ingridients: store.ingridients.ingridientsData,
-        openIngridientForm: store.openIngridientForm
+        openIngridientForm: store.openIngridientForm,
+        currentIngridient: store.currentIngridient
     }))
 
     const dispatch = useDispatch();
@@ -82,7 +83,7 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
-            <Modal isOpen={openIngridientForm}></Modal>
+            <Modal isOpen={openIngridientForm}><IngredientDetails data={currentIngridient}/></Modal>
         </div>
     )
 }
