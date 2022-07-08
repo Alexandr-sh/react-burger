@@ -11,7 +11,7 @@ const Modal = (props) => {
     if (!props.isOpen) return null;
     return ReactDOM.createPortal(
         <div className={styles.container}>
-
+            <ModalOverlay closeModal={props.onClose}/>
             <div className={styles.orderDetails}>
                 <button className={styles.button} onClick={props.onClose}><CloseIcon type="primary" /></button>
                 {props.children}
