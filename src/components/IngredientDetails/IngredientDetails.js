@@ -11,11 +11,6 @@ import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
 import { useEffect } from 'react';
 
 function IngredientDetails(props) {
-
-    useEffect(() => {
-        console.log(props)
-    })
-
     return (
         <>
             <div className={styles.ingredientDetails}>

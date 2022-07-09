@@ -20,9 +20,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import BurgerConstructorElement from './BurgerConstructorElement';
 import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
-
-
-/*const OrderDetailsModal = Modal(OrderDetails);*/
+import openOrderForm from '../../services/actions/openOrderForm';
 
 
 
@@ -53,7 +51,7 @@ function BurgerConstructor(props) {
         topping: store.topping,
         bun: store.bun,
         order: store.order.orderData.order,
-        store:store
+        store: store
     }), shallowEqual)
 
     useEffect(() => {
@@ -65,9 +63,13 @@ function BurgerConstructor(props) {
     })
 
     const getOrderInfo = () => {
-        const ingridients = [...topping,bun]
+        const ingridients = [...topping, bun]
         dispatch(getOrderData({ ingredients: ingridients }))
-     }
+    }
+
+    const closeModal = () => {
+        dispatch(openOrderForm(false))
+    }
 
     const moveListItem = useCallback(
         (dragIndex, hoverIndex) => {
@@ -120,6 +122,7 @@ function BurgerConstructor(props) {
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={getOrderInfo}>Оформить заказ</button>
             </div>
+            <Modal isOpen={orderFormIsOpened} onClose={closeModal}><OrderDetails data={order} /></Modal>
         </div>
     )
 }

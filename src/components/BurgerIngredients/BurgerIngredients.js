@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIngridients } from '../../services/actions/getIngridients';
+import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
+import { openIngridientForm } from '../../services/actions/openIngridientForm';
 
 
 
@@ -19,10 +21,10 @@ function BurgerIngredients(props) {
     const saucesRef = useRef(null);
     const toppingRef = useRef(null);
 
-    const {request, ingridients, openIngridientForm, currentIngridient} = useSelector(store => ({
+    const {request, ingridients, ingridientFormOpen, currentIngridient} = useSelector(store => ({
         request: store.ingridients.request,
         ingridients: store.ingridients.ingridientsData,
-        openIngridientForm: store.openIngridientForm,
+        ingridientFormOpen: store.openIngridientForm,
         currentIngridient: store.currentIngridient
     }))
 
@@ -42,6 +44,11 @@ function BurgerIngredients(props) {
         if (scrollPosition <= saucesLevel) setCurrent("Булки")
         if ((scrollPosition > saucesLevel)&(scrollPosition <= toppingLevel)) setCurrent("Соусы")
         if (scrollPosition > toppingLevel) setCurrent("Начинки")
+    }
+
+    const closeModal = () => {
+        dispatch(changeCurrentIngridient({}))
+        dispatch(openIngridientForm(false))
     }
 
     return(
@@ -83,7 +90,7 @@ function BurgerIngredients(props) {
                     )
                 ))}
             </div>
-            <Modal isOpen={openIngridientForm}><IngredientDetails data={currentIngridient}/></Modal>
+            <Modal isOpen={ingridientFormOpen} onClose={closeModal}><IngredientDetails data={currentIngridient}/></Modal>
         </div>
     )
 }
