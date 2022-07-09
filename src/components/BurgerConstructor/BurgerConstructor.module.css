@@ -1,6 +1,6 @@
 .burgerConstructor {
     padding: 100px 16px 92px 16px;
-    width: 615px;
+    width: 600px;
     max-height: calc(100vh - 128px);
     display: grid;
     grid-template-columns: 1fr;

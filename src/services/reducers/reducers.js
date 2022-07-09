@@ -48,7 +48,6 @@ export const order = (state = initialState.orderDetails, action) => {
         }
 
         case GET_ORDER_SUCCESS: {
-            console.log(action)
             return {
                 ...state,
                 orderData: action.data,

@@ -4,7 +4,7 @@ import { useDrag, useDrop  } from 'react-dnd';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 import { removeTopping } from '../../services/actions/changeTopping';
-import style from './BurgerConstructor.module.css';
+import style from './BurgerConstructorElement.module.css'
 
 function BurgerConstructorElement({index,type,isLocked,text,price,thumbnail,moveListItem,_id}){
 
@@ -47,7 +47,7 @@ function BurgerConstructorElement({index,type,isLocked,text,price,thumbnail,move
 
 
     return (
-        <div ref={dragDropRef}>
+        <div ref={dragDropRef} className={style.element}>
             <ConstructorElement
                 type={type}
                 isLocked={isLocked}

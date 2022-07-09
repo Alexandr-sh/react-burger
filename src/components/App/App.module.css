@@ -4,9 +4,12 @@
     background-color: rgb(28,28,33);
     color: #F2F2F3;
     font-family: 'JetBrains Mono', 'Arial', sans-serif;
+    justify-content: center;
+    align-content: center;
 }
 
 .content {
+    margin: auto;
     display: flex;
     justify-content: center;
     align-content: center;
