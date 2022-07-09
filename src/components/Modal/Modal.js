@@ -35,8 +35,7 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
-    isOpened: PropTypes.bool.isRequired,
-    data: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
+    isOpen: PropTypes.bool.isRequired
 };
 
 export default Modal;

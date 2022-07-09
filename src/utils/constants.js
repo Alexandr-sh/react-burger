@@ -10,7 +10,7 @@ export const UPDATE_TOPPING = "UPDATE_TOPPING"
 export const CHANGE_TOTAL_PRICE = "CHANGE_TOTAL_PRICE"
 export const GET_INGRIDIENTS_SUCCESS = "GET_INGRIDIENTS_SUCCESS"
 export const GET_INGRIDIENTS = "GET_INGRIDIENTS"
-export const GET_INGRIDIENTS_FAILED ="GET_INGRIDIENTS_FAILED"
+export const GET_INGRIDIENTS_FAILED = "GET_INGRIDIENTS_FAILED"
 export const GET_ORDER_SUCCESS = "GET_ORDER_SUCCESS"
 export const GET_ORDER = "GET_ORDER"
 export const GET_ORDER_FAILED = "GET_ORDER_FAILED"
@@ -30,4 +30,29 @@ export const BURGER_INGRIDIENT_PROPTYPES = {
     image_mobile: PropTypes.string,
     image_large: PropTypes.string,
     __v: PropTypes.number.isRequired,
+}
+
+export const DEFAULT_INGRIDIENT = {
+    "_id": "",
+    "name": "",
+    "type": "",
+    "proteins": 0,
+    "fat": 0,
+    "carbohydrates": 0,
+    "calories": 0,
+    "price": 0,
+    "image": "0",
+    "image_mobile": "0",
+    "image_large": "0",
+    "__v": 0
+}
+
+export const DEFAULT_ORDER = {
+    name: "",
+    order: { number: 0 },
+    success: true
+}
+
+export const ORDER_PROPTYPES = {
+    number: PropTypes.number.isRequired
 }

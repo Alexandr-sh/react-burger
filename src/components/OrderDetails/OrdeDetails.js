@@ -5,7 +5,7 @@ import doneImgPath from '../../images/done.png'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import openOrderForm from "../../services/actions/openOrderForm"
 import { useEffect } from 'react';
-import { BURGER_INGRIDIENT_PROPTYPES } from '../../utils/constants';
+import { BURGER_INGRIDIENT_PROPTYPES, ORDER_PROPTYPES } from '../../utils/constants';
 import PropTypes from 'prop-types';
 
 function OrderDetails(props) {
@@ -23,7 +23,7 @@ function OrderDetails(props) {
 }
 
 OrderDetails.propTypes = {
-    data: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
+    data: PropTypes.shape(ORDER_PROPTYPES).isRequired
 };
 
 export default OrderDetails;

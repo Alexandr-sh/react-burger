@@ -26,6 +26,14 @@ import openOrderForm from '../../services/actions/openOrderForm';
 
 function BurgerConstructor(props) {
 
+    useEffect(() => {
+        let newTotalPrice = bun.price * 2;
+        topping.forEach(element => {
+            newTotalPrice += element.price;
+        });
+        setTotalPrice(newTotalPrice.toString());
+    })
+
     const inputRef = useRef(null);
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -53,14 +61,6 @@ function BurgerConstructor(props) {
         order: store.order.orderData.order,
         store: store
     }), shallowEqual)
-
-    useEffect(() => {
-        let newTotalPrice = bun.price * 2;
-        topping.forEach(element => {
-            newTotalPrice += element.price;
-        });
-        setTotalPrice(newTotalPrice);
-    })
 
     const getOrderInfo = () => {
         const ingridients = [...topping, bun]
@@ -116,20 +116,15 @@ function BurgerConstructor(props) {
                 price={bun.price}
                 thumbnail={bun.image}
                 key={bun._id + 1}
-            />
+        />
             <div className={styles.footer}>
                 <div className={`${styles.totalPrice} text text_type_digits-medium`}>{totalPrice}</div>
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={getOrderInfo}>Оформить заказ</button>
-            </div>
+        </div>
             <Modal isOpen={orderFormIsOpened} onClose={closeModal}><OrderDetails data={order} /></Modal>
         </div>
     )
 }
-
-BurgerConstructor.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES)).isRequired,
-    bun: PropTypes.shape(BURGER_INGRIDIENT_PROPTYPES).isRequired
-};
 
 export default BurgerConstructor;

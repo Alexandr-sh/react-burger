@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getIngridients } from '../../services/actions/getIngridients';
 import { changeCurrentIngridient } from '../../services/actions/changeCurrentIngridient';
 import { openIngridientForm } from '../../services/actions/openIngridientForm';
+import { DEFAULT_INGRIDIENT } from '../../utils/constants';
 
 
 
@@ -47,7 +48,7 @@ function BurgerIngredients(props) {
     }
 
     const closeModal = () => {
-        dispatch(changeCurrentIngridient({}))
+        dispatch(changeCurrentIngridient(DEFAULT_INGRIDIENT))
         dispatch(openIngridientForm(false))
     }
 
@@ -89,7 +90,7 @@ function BurgerIngredients(props) {
                         <ListItem data={ingridient} key={ingridient._id}/>
                     )
                 ))}
-            </div>
+                    </div>
             <Modal isOpen={ingridientFormOpen} onClose={closeModal}><IngredientDetails data={currentIngridient}/></Modal>
         </div>
     )

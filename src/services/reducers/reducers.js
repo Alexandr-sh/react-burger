@@ -14,6 +14,8 @@ import { GET_ORDER } from '../../utils/constants';
 import { GET_ORDER_FAILED } from '../../utils/constants';
 import { OPEN_INGRIDIENT_FORM } from '../../utils/constants';
 import { OPEN_ORDER_FORM } from '../../utils/constants';
+import { DEFAULT_INGRIDIENT } from '../../utils/constants';
+import { DEFAULT_ORDER } from '../../utils/constants';
 
 const initialState = {
     loading: true,
@@ -27,11 +29,11 @@ const initialState = {
     orderDetails: {
         request: false,
         requestFailed: false,
-        orderData: {}
+        orderData: DEFAULT_ORDER
     },
     ingridientFormIsOpened: false,
     orderFormIsOpened: false,
-    currentIngridient: {},
+    currentIngridient: DEFAULT_INGRIDIENT,
     totalPrice: 0
 }
 
@@ -46,6 +48,7 @@ export const order = (state = initialState.orderDetails, action) => {
         }
 
         case GET_ORDER_SUCCESS: {
+            console.log(action)
             return {
                 ...state,
                 orderData: action.data,
