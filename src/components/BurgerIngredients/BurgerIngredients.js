@@ -47,6 +47,13 @@ function BurgerIngredients(props) {
         if (scrollPosition > toppingLevel) setCurrent("Начинки")
     }
 
+    const scrollTo = (type) => {
+        setCurrent(type)
+        if(type === "Булки") bunsRef.current.scrollIntoView({behavior:"smooth"})
+        if(type === 'Соусы') saucesRef.current.scrollIntoView({behavior:"smooth"})
+        if(type === 'Начинки') toppingRef.current.scrollIntoView({behavior:"smooth"})
+    }
+
     const closeModal = () => {
         dispatch(changeCurrentIngridient(DEFAULT_INGRIDIENT))
         dispatch(openIngridientForm(false))
@@ -57,13 +64,13 @@ function BurgerIngredients(props) {
         <div className={styles.burgerIngridients} onScroll={handleScroll} ref={thisRef}>
             <h2 className={`${styles.title} text text_type_main-large`}>Соберите бургер</h2>
             <div className={styles.selector}>
-                <Tab value="Булки" active={current === "Булки"} onClick={setCurrent}>
+                <Tab value="Булки" active={current === "Булки"} onClick={scrollTo}>
                     Булки
                 </Tab>
-                <Tab value="Соусы" active={current === 'Соусы'} onClick={setCurrent}>
+                <Tab value="Соусы" active={current === 'Соусы'} onClick={scrollTo}>
                     Соусы
                 </Tab>
-                <Tab value="Начинки" active={current === 'Начинки'} onClick={setCurrent}>
+                <Tab value="Начинки" active={current === 'Начинки'} onClick={scrollTo}>
                     Начинки
                 </Tab>
             </div>

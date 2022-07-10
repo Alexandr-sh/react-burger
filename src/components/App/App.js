@@ -29,6 +29,7 @@ const App = () => {
           <BurgerIngredients />
           <BurgerConstructor />
         </div>
+        <div id="modals"></div>
       </div >
     </DndProvider>
   )

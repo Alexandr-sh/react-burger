@@ -27,12 +27,13 @@ import openOrderForm from '../../services/actions/openOrderForm';
 function BurgerConstructor(props) {
 
     useEffect(() => {
-        console.log(bun)
-        let newTotalPrice = bun.price * 2;
-        topping.forEach(element => {
-            newTotalPrice += element.price;
-        });
-        setTotalPrice(newTotalPrice.toString());
+        if (bun) {
+            let newTotalPrice = bun.price * 2;
+            topping.forEach(element => {
+                newTotalPrice += element.price;
+            });
+            setTotalPrice(newTotalPrice.toString());
+        }
     })
 
     const inputRef = useRef(null);
@@ -45,9 +46,9 @@ function BurgerConstructor(props) {
         accept: "ingridient",
         drop(ingridientData) {
             if (ingridientData.type === 'bun') dispatch(changeBun(ingridientData))
-            if (ingridientData.type !== 'bun') {
+            if (ingridientData.type !== 'bun' && bun) {
                 ingridientData.index = topping.length
-                dispatch(addTopping({...ingridientData}))
+                dispatch(addTopping({ ...ingridientData }))
             }
             dispatch(changeCurrentIngridient(ingridientData))
         },
@@ -118,7 +119,7 @@ function BurgerConstructor(props) {
                 <ConstructorElement
                     type="bottom"
                     isLocked={true}
-                    text={bun.name+" (низ)"}
+                    text={bun.name + " (низ)"}
                     price={bun.price}
                     thumbnail={bun.image}
                     key={bun._id + 1}
