@@ -19,7 +19,7 @@ import { DEFAULT_ORDER } from '../../utils/constants';
 
 const initialState = {
     loading: true,
-    bun: {},
+    bun: null,
     ingridients: {
         request: false,
         requestFailed: false,

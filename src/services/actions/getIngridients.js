@@ -25,14 +25,14 @@ export const getIngridients = () => {
             return res.json()
         }).then(res => {
             dispatch(getIngridientsSuccess(res.data))
-            let initialBun = {}
+            /*let initialBun = {}
             for (let i = 0; i < res.data.length; ++i) {
                 if (res.data[i].type === "bun") {
                     initialBun = res.data[i];
                     break;
                 }
             }
-            dispatch(changeBun(initialBun))
+            dispatch(changeBun(initialBun))*/
         }).catch(err => {
             console.log(err)
             dispatch({

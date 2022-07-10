@@ -27,6 +27,7 @@ import openOrderForm from '../../services/actions/openOrderForm';
 function BurgerConstructor(props) {
 
     useEffect(() => {
+        console.log(bun)
         let newTotalPrice = bun.price * 2;
         topping.forEach(element => {
             newTotalPrice += element.price;
@@ -46,7 +47,7 @@ function BurgerConstructor(props) {
             if (ingridientData.type === 'bun') dispatch(changeBun(ingridientData))
             if (ingridientData.type !== 'bun') {
                 ingridientData.index = topping.length
-                dispatch(addTopping(ingridientData))
+                dispatch(addTopping({...ingridientData}))
             }
             dispatch(changeCurrentIngridient(ingridientData))
         },
@@ -85,19 +86,23 @@ function BurgerConstructor(props) {
         [topping],
     )
 
+
     return (
         <div className={styles.burgerConstructor} ref={dropTarget}>
-            <ConstructorElement
-                type="top"
-                isLocked={true}
-                text={bun.name}
-                price={bun.price}
-                thumbnail={bun.image}
-                key={bun._id}
-            />
+            {bun ? (
+                <ConstructorElement
+                    type="top"
+                    isLocked={true}
+                    text={bun.name + " (верх)"}
+                    price={bun.price}
+                    thumbnail={bun.image}
+                    key={bun._id}
+                />) :
+                (<h2>Пожалуйста, перенесите сюда булку и ингредиенты для создания заказа</h2>)
+            }
             {
-                topping.map((ingridient, index) => (
-                    <BurgerConstructorElement
+                topping.map((ingridient) => (
+                    (<BurgerConstructorElement
                         isLocked={false}
                         text={ingridient.name}
                         price={ingridient.price}
@@ -106,22 +111,24 @@ function BurgerConstructor(props) {
                         index={ingridient.index}
                         moveListItem={moveListItem}
                         _id={ingridient._id}
-                    />
+                    />)
                 ))
             }
-            <ConstructorElement
-                type="bottom"
-                isLocked={true}
-                text={bun.name}
-                price={bun.price}
-                thumbnail={bun.image}
-                key={bun._id + 1}
-        />
+            {bun && (
+                <ConstructorElement
+                    type="bottom"
+                    isLocked={true}
+                    text={bun.name+" (низ)"}
+                    price={bun.price}
+                    thumbnail={bun.image}
+                    key={bun._id + 1}
+                />)
+            }
             <div className={styles.footer}>
                 <div className={`${styles.totalPrice} text text_type_digits-medium`}>{totalPrice}</div>
                 <CurrencyIcon type="primary" />
                 <button className={`${styles.button} text text_type_main-default`} onClick={getOrderInfo}>Оформить заказ</button>
-        </div>
+            </div>
             <Modal isOpen={orderFormIsOpened} onClose={closeModal}><OrderDetails data={order} /></Modal>
         </div>
     )
