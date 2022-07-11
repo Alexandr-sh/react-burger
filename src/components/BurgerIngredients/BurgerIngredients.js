@@ -40,8 +40,8 @@ function BurgerIngredients(props) {
     const handleScroll = (e) =>{
         e.stopPropagation()
         const scrollPosition = thisRef.current.scrollTop
-        const saucesLevel = saucesRef.current.offsetTop
-        const toppingLevel = toppingRef.current.offsetTop
+        const saucesLevel = saucesRef.current.offsetTop-100
+        const toppingLevel = toppingRef.current.offsetTop-100
         if (scrollPosition <= saucesLevel) setCurrent("Булки")
         if ((scrollPosition > saucesLevel)&(scrollPosition <= toppingLevel)) setCurrent("Соусы")
         if (scrollPosition > toppingLevel) setCurrent("Начинки")
