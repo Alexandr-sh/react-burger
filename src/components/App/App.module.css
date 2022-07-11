@@ -1,0 +1,17 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(19, 19, 22);
+    color: #F2F2F3;
+    font-family: 'JetBrains Mono', 'Arial', sans-serif;
+    justify-content: center;
+    align-content: center;
+}
+
+.content {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+

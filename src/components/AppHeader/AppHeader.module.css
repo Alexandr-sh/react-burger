@@ -1,0 +1,17 @@
+.AppHeader {
+    margin: auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.container {
+    background: #1C1C21;
+}
