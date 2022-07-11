@@ -48,6 +48,7 @@ function BurgerConstructor(props) {
             if (ingridientData.type === 'bun') dispatch(changeBun(ingridientData))
             if (ingridientData.type !== 'bun' && bun) {
                 ingridientData.index = topping.length
+                ingridientData.uuid = uuidv4()
                 dispatch(addTopping({ ...ingridientData }))
             }
             dispatch(changeCurrentIngridient(ingridientData))
@@ -108,7 +109,7 @@ function BurgerConstructor(props) {
                         text={ingridient.name}
                         price={ingridient.price}
                         thumbnail={ingridient.image}
-                        key={uuidv4()}
+                        key={ingridient.uuid}
                         index={ingridient.index}
                         moveListItem={moveListItem}
                         _id={ingridient._id}

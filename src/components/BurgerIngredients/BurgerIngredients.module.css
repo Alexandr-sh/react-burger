@@ -6,6 +6,11 @@
     overflow: auto;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .burgerIngridients::-webkit-scrollbar {
     width: 10px;
     background-color: #2F2F37;

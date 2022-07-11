@@ -40,8 +40,8 @@ function BurgerIngredients(props) {
     const handleScroll = (e) =>{
         e.stopPropagation()
         const scrollPosition = thisRef.current.scrollTop
-        const saucesLevel = saucesRef.current.offsetTop-100
-        const toppingLevel = toppingRef.current.offsetTop-100
+        const saucesLevel = saucesRef.current.offsetTop-300
+        const toppingLevel = toppingRef.current.offsetTop-300
         if (scrollPosition <= saucesLevel) setCurrent("Булки")
         if ((scrollPosition > saucesLevel)&(scrollPosition <= toppingLevel)) setCurrent("Соусы")
         if (scrollPosition > toppingLevel) setCurrent("Начинки")
@@ -61,8 +61,8 @@ function BurgerIngredients(props) {
 
     return(
         !request&&
-        <div className={styles.burgerIngridients} onScroll={handleScroll} ref={thisRef}>
-            <h2 className={`${styles.title} text text_type_main-large`}>Соберите бургер</h2>
+        <div className={styles.container}>
+        <h2 className={`${styles.title} text text_type_main-large`}>Соберите бургер</h2>
             <div className={styles.selector}>
                 <Tab value="Булки" active={current === "Булки"} onClick={scrollTo}>
                     Булки
@@ -74,6 +74,8 @@ function BurgerIngredients(props) {
                     Начинки
                 </Tab>
             </div>
+        <div className={styles.burgerIngridients} onScroll={handleScroll} ref={thisRef}>
+            
             <h3 className={`${styles.title} text text_type_main-medium`} ref={bunsRef}>Булки</h3>
             <div className={styles.ingridientsList} >
                 {ingridients.map((ingridient, index) => (
@@ -99,6 +101,7 @@ function BurgerIngredients(props) {
                 ))}
                     </div>
             <Modal isOpen={ingridientFormOpen} onClose={closeModal}><IngredientDetails data={currentIngridient}/></Modal>
+        </div>
         </div>
     )
 }
